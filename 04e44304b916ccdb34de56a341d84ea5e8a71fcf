@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898db1e3_f7577d2e",
+        "filename": "bizm.gemspec",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1019619
+      },
+      "writtenOn": "2021-12-20T10:13:54Z",
+      "side": 1,
+      "message": "수현님, 이름 스펠링이 이것 맞나요? 회사 이메일이랑 달라서 확인차 여쭙니다.",
+      "range": {
+        "startLine": 6,
+        "startChar": 20,
+        "endLine": 6,
+        "endChar": 28
+      },
+      "revId": "04e44304b916ccdb34de56a341d84ea5e8a71fcf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
