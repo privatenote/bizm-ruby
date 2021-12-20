@@ -2,18 +2,22 @@ require 'net/http'
 require 'net/https'
 require 'json'
 
-class KakaoMsg
-  def set_client(user_id, profile)
+class BizM
+
+  def initialize(user_id, profile)
     @user_id = user_id
     @profile = profile
   end
 
   def send(
-    phone:, msg:, tmpl_id:,
-    reserve_dt: "00000000000000",
-    button_name: nil, button_url: nil
+    phone:,
+    msg:,
+    tmpl_id:,
+    reserve_dt: '00000000000000',
+    button_name: nil,
+    button_url: nil
   )
-    uri = URI.parse("https://alimtalk-api.bizmsg.kr/v2/sender/send")
+    uri = URI.parse('https://alimtalk-api.bizmsg.kr/v2/sender/send')
 
     header = {
       'Content-type': 'application/json;charset=UTF-8',
@@ -22,7 +26,7 @@ class KakaoMsg
     if button_name
       data = [
         {
-          message_type: "AT",
+          message_type: 'AT',
           phn: phone,
           profile: @profile,
           reserveDt: reserve_dt,
@@ -30,7 +34,7 @@ class KakaoMsg
           tmplId: tmpl_id,
           button1: {
             name: button_name,
-            type: "WL",
+            type: 'WL',
             url_mobile: button_url
           }
         }
@@ -38,7 +42,7 @@ class KakaoMsg
     else
       data = [
         {
-          message_type: "AT",
+          message_type: 'AT',
           phn: phone,
           profile: @profile,
           reserveDt: reserve_dt,
@@ -61,7 +65,7 @@ class KakaoMsg
   def cancel(
     msg_id: 
   )
-    uri = URI.parse("https://alimtalk-api.bizmsg.kr/v2/sender/cancel_reserved")
+    uri = URI.parse('https://alimtalk-api.bizmsg.kr/v2/sender/cancel_reserved')
 
     header = {
       'Content-type': 'application/json;charset=UTF-8',
