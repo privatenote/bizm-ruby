@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5a7ea9_6b858a58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019619
+      },
+      "writtenOn": "2021-12-21T06:41:18Z",
+      "side": 1,
+      "message": "+2 되는지 다시 확인해주세요~",
+      "parentUuid": "241eb97f_e62bd755",
+      "revId": "04e44304b916ccdb34de56a341d84ea5e8a71fcf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "898db1e3_f7577d2e",
