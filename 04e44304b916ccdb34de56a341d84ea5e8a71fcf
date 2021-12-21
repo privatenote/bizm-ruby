@@ -22,6 +22,30 @@
       },
       "revId": "04e44304b916ccdb34de56a341d84ea5e8a71fcf",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d58f2f2_69f79e5d",
+        "filename": "bizm.gemspec",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1019624
+      },
+      "writtenOn": "2021-12-21T04:36:37Z",
+      "side": 1,
+      "message": "네 저는 이렇게 쓰는데 회사메일은 회사에서 그냥 만들어줘서 hyun으로 돼있습니다",
+      "parentUuid": "898db1e3_f7577d2e",
+      "range": {
+        "startLine": 6,
+        "startChar": 20,
+        "endLine": 6,
+        "endChar": 28
+      },
+      "revId": "04e44304b916ccdb34de56a341d84ea5e8a71fcf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
