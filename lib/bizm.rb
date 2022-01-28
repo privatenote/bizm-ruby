@@ -59,7 +59,7 @@ class BizM
 
     response = http.request(request)
 
-    return response
+    return JSON.parse(response.body[0])
   end
 
   def cancel(
@@ -83,6 +83,6 @@ class BizM
 
     response = http.request(request)
 
-    return response
+    return JSON.parse(response.body)
   end
 end
