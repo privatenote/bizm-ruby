@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'bizm'
-  s.version     = '2.0.0'
+  s.version     = '2.0.1'
   s.summary     = 'BizM client for ruby'
   s.description = 'BizM client for ruby sending Kakao AlimTalk'
   s.authors     = ['Soohyeon Lee', 'Gyumin Sim']
