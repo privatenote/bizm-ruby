@@ -7,8 +7,7 @@ bizm.send(
   msg: 'Welcome!',
   tmpl_id: 'template01',
   reserve_dt: '00000000000000',
-  button_name: nil,
-  button_url: nil
+  buttons: [{name: 'Go', url: 'https://www.bizmsg.kr/'}]
 )
 # reserve_dt가 '00000000000000'인 경우는 즉시 발송
 ```

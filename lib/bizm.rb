@@ -16,6 +16,7 @@ class BizM
     reserve_dt: '00000000000000',
     button_name: nil,
     button_url: nil,
+    buttons: [],
     msg_sms: nil,
     sms_sender: nil
   )
@@ -35,11 +36,18 @@ class BizM
       tmplId: tmpl_id
     }
 
-    if button_name
-      data[:button1] = {
+    if buttons.empty? && !button_name.nil?
+      buttons << {
         name: button_name,
+        url: button_url
+      }
+    end
+
+    buttons.each_with_index do |button, index|
+      data["button#{index + 1}".to_sym] = {
+        name: button[:name],
         type: 'WL',
-        url_mobile: button_url
+        url_mobile: button[:url]
       }
     end
 
