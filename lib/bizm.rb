@@ -52,7 +52,7 @@ class BizM
     end
 
     if msg_sms && sms_sender
-      data[:smsKind] = 'S'
+      data[:smsKind] = msg_sms.bytesize > 90 ? 'L' : 'S'
       data[:msgSms] = msg_sms
       data[:smsSender] = sms_sender
     end
