@@ -44,11 +44,14 @@ class BizM
     end
 
     buttons.each_with_index do |button, index|
-      data["button#{index + 1}".to_sym] = {
+      button_data = {
         name: button[:name],
         type: 'WL',
-        url_mobile: button[:url]
+        url_mobile: button[:url],
       }
+      button_data.merge!(url_pc: button[:url_pc]) if button[:url_pc].present?
+
+      data["button#{index + 1}".to_sym] = button_data
     end
 
     if msg_sms && sms_sender
