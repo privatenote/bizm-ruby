@@ -77,7 +77,6 @@ class BizM
     uri = URI.parse('https://alimtalk-api.bizmsg.kr/v2/sender/cancel_reserved')
 
     header = {
-      'Content-type': 'application/json;charset=UTF-8',
       'userid': @user_id
     }
     data = {
@@ -85,7 +84,7 @@ class BizM
       profile: @profile,
     }
     request = Net::HTTP::Post.new(uri.path, header)
-    request.body = data.to_json
+    request.set_form_data(data)  # This API doesn't accept JSON body
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
