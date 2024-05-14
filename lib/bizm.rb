@@ -13,6 +13,7 @@ class BizM
     phone:,
     msg:,
     tmpl_id:,
+    message_type: 'AT',
     reserve_dt: '00000000000000',
     button_name: nil,
     button_url: nil,
@@ -28,7 +29,7 @@ class BizM
     }
 
     data = {
-      message_type: 'AT',
+      message_type: message_type,
       phn: phone,
       profile: @profile,
       reserveDt: reserve_dt,
