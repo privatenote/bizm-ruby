@@ -18,6 +18,7 @@ class BizM
     button_name: nil,
     button_url: nil,
     buttons: [],
+    item: nil,
     msg_sms: nil,
     sms_sender: nil
   )
@@ -34,7 +35,8 @@ class BizM
       profile: @profile,
       reserveDt: reserve_dt,
       msg: msg,
-      tmplId: tmpl_id
+      tmplId: tmpl_id,
+      item: item
     }
 
     if buttons.empty? && !button_name.nil?
