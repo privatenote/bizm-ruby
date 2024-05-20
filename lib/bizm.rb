@@ -18,25 +18,22 @@ class BizM
     button_name: nil,
     button_url: nil,
     buttons: [],
-    item: nil,
+    items: nil,
+    header: nil,
     msg_sms: nil,
     sms_sender: nil
   )
     uri = URI.parse('https://alimtalk-api.bizmsg.kr/v2/sender/send')
-
-    header = {
-      'Content-type': 'application/json;charset=UTF-8',
-      'userid': @user_id
-    }
 
     data = {
       message_type: message_type,
       phn: phone,
       profile: @profile,
       reserveDt: reserve_dt,
+      header: header,
+      items: items,
       msg: msg,
-      tmplId: tmpl_id,
-      item: item
+      tmplId: tmpl_id
     }
 
     if buttons.empty? && !button_name.nil?
@@ -63,7 +60,12 @@ class BizM
       data[:smsSender] = sms_sender
     end
 
-    request = Net::HTTP::Post.new(uri.path, header)
+    request_header = {
+      'Content-type': 'application/json;charset=UTF-8',
+      'userid': @user_id
+    }
+
+    request = Net::HTTP::Post.new(uri.path, request_header)
     request.body = [data].to_json
 
     http = Net::HTTP.new(uri.host, uri.port)
