@@ -68,8 +68,7 @@ class BizM
     request = Net::HTTP::Post.new(uri.path, request_header)
     request.body = [data].to_json
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http = get_http(uri)
 
     response = http.request(request)
 
@@ -91,11 +90,19 @@ class BizM
     request = Net::HTTP::Post.new(uri.path, header)
     request.set_form_data(data)  # This API doesn't accept JSON body
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http = get_http(uri)
 
     response = http.request(request)
 
     return JSON.parse(response.body)
+  end
+
+  private
+  def get_http(uri)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.read_timeout = 100
+
+    http
   end
 end
