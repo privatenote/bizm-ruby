@@ -97,6 +97,28 @@ class BizM
     return JSON.parse(response.body)
   end
 
+  def report(
+    msg_id:
+  )
+    uri = URI.parse('https://alimtalk-api.bizmsg.kr/v2/sender/report')
+
+    header = {
+      'userid': @user_id
+    }
+    data = {
+      msgid: msg_id,
+      profile: @profile,
+    }
+    uri.query = URI.encode_www_form(data)
+    request = Net::HTTP::Get.new(uri.request_uri, header)
+
+    http = get_http(uri)
+
+    response = http.request(request)
+
+    return JSON.parse(response.body)
+  end
+
   private
   def get_http(uri)
     http = Net::HTTP.new(uri.host, uri.port)
