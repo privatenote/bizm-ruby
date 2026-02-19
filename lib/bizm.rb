@@ -49,7 +49,7 @@ class BizM
         type: 'WL',
         url_mobile: button[:url],
       }
-      button_data.merge!(url_pc: button[:url_pc]) if button[:url_pc].present?
+      button_data.merge!(url_pc: button[:url_pc]) if button[:url_pc] && !button[:url_pc].empty?
 
       data["button#{index + 1}".to_sym] = button_data
     end
