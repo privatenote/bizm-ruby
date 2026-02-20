@@ -6,13 +6,28 @@ on:
       - main
 
 jobs:
-  SonarQube:
+  rspec_and_sonarqube:
+    name: RSpec & SonarQube
     runs-on: [self-hosted, linux]
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: Wandalen/wretry.action@master
+        timeout-minutes: 7
+        with:
+          action: ruby/setup-ruby@v1
+          attempt_limit: 3
+          attempt_delay: 2000
+          with: |
+            bundler-cache: true
+
+      - name: Run Test
+        run: bundle exec rspec --format json --out tmp/rspec_results.json
+
       - uses: SonarSource/sonarqube-scan-action@v7
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
