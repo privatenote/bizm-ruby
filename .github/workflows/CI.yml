@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  rspec_and_sonarqube:
-    name: RSpec & SonarQube
+  rspec:
+    name: RSpec
     runs-on: [self-hosted, linux]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -28,7 +28,33 @@ jobs:
       - name: Run Test
         run: bundle exec rspec --format json --out tmp/rspec_results.json
 
+      - name: Upload Coverage
+        uses: actions/upload-artifact@v7
+        with:
+          name: code-coverage-report
+          path: coverage
+          retention-days: 1
+
+  sonarqube:
+    name: SonarQube
+    needs: rspec
+    runs-on: [self-hosted, linux, sonarqube]
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Download coverage
+        uses: actions/download-artifact@v8
+        with:
+          name: code-coverage-report
+          path: coverage
+
       - uses: SonarSource/sonarqube-scan-action@v7
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+          with:
+            args: >
+              -Dsonar.ruby.coverage.reportPaths=coverage/coverage.json
