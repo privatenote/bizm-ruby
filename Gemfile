@@ -7,6 +7,5 @@ group :test do
   gem 'webmock'
 end
 group :development, :test do
-  gem 'simplecov'
-  gem 'simplecov_json_formatter'
+  gem 'simplecov', '>= 1.2.0'
 end
